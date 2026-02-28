@@ -116,6 +116,14 @@ const certificates = [
     link: "https://www.linkedin.com/posts/mohammed-nuhman-m-167576338_html-certification-activity-7311320957053292544-eemZ"
   },
   {
+    title: "Basic Programming Certification",
+    issuer: "Online Certification",
+    date: "2024",
+    credential: "Programming Fundamentals",
+    image: "https://media.licdn.com/dms/image/v2/D4E22AQFA3LerE4CifA/feedshare-shrink_800/B4EZWyRYpnHcAg-/0/1742452659241?e=2147483647&v=beta&t=8ONJbKQnqP9JiVCVfGZeQyit6ylJUllnNoEH5dirEDI",
+    link: "https://www.linkedin.com/posts/mohammed-nuhman-m-167576338_basic-programming-certification-activity-7308376167986720769-tN6k"
+  },
+  {
     title: "Frontend Development",
     issuer: "Brototype Cross Roads",
     date: "2024",
@@ -129,14 +137,6 @@ const certificates = [
     date: "2024",
     credential: "Foundation Course",
     image: "/cert-c.jpg",
-    link: "#"
-  },
-  {
-    title: "Java Programming",
-    issuer: "Brototype",
-    date: "2024",
-    credential: "Foundation Course",
-    image: "/cert-java.jpg",
     link: "#"
   }
 ]
