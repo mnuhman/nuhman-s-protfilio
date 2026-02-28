@@ -128,8 +128,8 @@ const certificates = [
     issuer: "Online Certification",
     date: "2025",
     credential: "English Language Proficiency",
-    image: "/cert-english.jpg",
-    link: "https://www.linkedin.com/posts/mohammed-nuhman-m-167576338_english-activity-7433342475953635331-8dDS"
+    image: "https://media.licdn.com/dms/image/v2/D5622AQGmCdaWljh5xw/feedshare-shrink_800/B56ZyiLb3NGoAg-/0/1772247432888?e=2147483647&v=beta&t=gFOwN1kWZW5bAABh2uKJCMYmADrt44Hejw4YigFFHRQ",
+    link: "https://www.linkedin.com/posts/mohammed-nuhman-m-167576338_activity-7433344502209232896-Gn7D"
   },
   {
     title: "HP LIFE Certificate",
