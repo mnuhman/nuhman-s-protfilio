@@ -108,6 +108,14 @@ const socialLinks = [
 
 const certificates = [
   {
+    title: "HTML Certification",
+    issuer: "Online Certification",
+    date: "2024",
+    credential: "HTML Fundamentals",
+    image: "https://media.licdn.com/dms/image/v2/D4E22AQHoDjkep60lHg/feedshare-shrink_800/B4EZXcHqXDHcAg-/0/1743154752664?e=2147483647&v=beta&t=hCXY3Cphdw9c2O05p8S_odtQVV2i0mtszmeWtHCb8lk",
+    link: "https://www.linkedin.com/posts/mohammed-nuhman-m-167576338_html-certification-activity-7311320957053292544-eemZ"
+  },
+  {
     title: "Frontend Development",
     issuer: "Brototype Cross Roads",
     date: "2024",
@@ -129,14 +137,6 @@ const certificates = [
     date: "2024",
     credential: "Foundation Course",
     image: "/cert-java.jpg",
-    link: "#"
-  },
-  {
-    title: "Web Design Fundamentals",
-    issuer: "Online Certification",
-    date: "2024",
-    credential: "HTML, CSS & JavaScript",
-    image: "/cert-web.jpg",
     link: "#"
   }
 ]
@@ -615,9 +615,17 @@ export default function Portfolio() {
                   className="group overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
                 >
                   <div className="aspect-[4/3] bg-gradient-to-br from-primary/20 to-primary/5 relative overflow-hidden flex items-center justify-center">
-                    <Award className="h-16 w-16 text-primary/40 group-hover:scale-110 transition-transform duration-300" />
+                    {cert.image.startsWith("http") ? (
+                      <img 
+                        src={cert.image} 
+                        alt={cert.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    ) : (
+                      <Award className="h-16 w-16 text-primary/40 group-hover:scale-110 transition-transform duration-300" />
+                    )}
                     <div className="absolute top-3 right-3">
-                      <Badge variant="secondary" className="text-xs">
+                      <Badge variant="secondary" className="text-xs bg-background/80 backdrop-blur-sm">
                         {cert.date}
                       </Badge>
                     </div>
