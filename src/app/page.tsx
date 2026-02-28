@@ -143,35 +143,35 @@ const certificates = [
 
 const blogs = [
   {
-    title: "Getting Started with Frontend Development",
-    excerpt: "A beginner's guide to starting your journey in frontend development. Learn about HTML, CSS, JavaScript and the tools you need to build modern websites.",
-    date: "Dec 15, 2024",
-    readTime: "5 min read",
-    tags: ["Frontend", "Beginner", "Web Development"],
-    link: "#"
-  },
-  {
-    title: "Why I Chose to Learn Web Development",
-    excerpt: "My personal journey into web development, the challenges I faced, and how I overcame them. Tips for anyone starting their coding journey.",
-    date: "Dec 10, 2024",
+    title: "My Journey into Frontend Development",
+    excerpt: "How I discovered my passion for web development and started my learning journey at Brototype Cross Roads. From curiosity about websites to building interactive projects, here's my story of growth and learning.",
+    date: "Feb 28, 2025",
     readTime: "4 min read",
     tags: ["Career", "Learning", "Personal"],
     link: "#"
   },
   {
-    title: "CSS Tips and Tricks for Beginners",
-    excerpt: "Useful CSS techniques that every beginner should know. From flexbox to grid, learn how to create beautiful layouts with ease.",
-    date: "Dec 5, 2024",
+    title: "HTML & CSS: The Foundation of Web Development",
+    excerpt: "A beginner-friendly guide to understanding HTML and CSS. Learn how these two technologies work together to create beautiful, structured websites. Tips and tricks I learned during my certification journey.",
+    date: "Feb 20, 2025",
     readTime: "6 min read",
+    tags: ["HTML", "CSS", "Beginner"],
+    link: "#"
+  },
+  {
+    title: "5 CSS Tips Every Beginner Should Know",
+    excerpt: "Practical CSS techniques that helped me improve my web designs. From Flexbox layouts to responsive units, these tips will make your styling more efficient and your websites more beautiful.",
+    date: "Feb 10, 2025",
+    readTime: "5 min read",
     tags: ["CSS", "Tips", "Tutorial"],
     link: "#"
   },
   {
-    title: "Building Responsive Websites in 2024",
-    excerpt: "Best practices for creating responsive websites that work perfectly on all devices. Mobile-first approach and modern CSS techniques.",
-    date: "Nov 28, 2024",
-    readTime: "7 min read",
-    tags: ["Responsive", "CSS", "Mobile"],
+    title: "Why Learning Programming Fundamentals Matters",
+    excerpt: "Before diving into web frameworks, understanding programming basics is crucial. How learning C and Java helped me become a better frontend developer and problem solver.",
+    date: "Jan 28, 2025",
+    readTime: "5 min read",
+    tags: ["Programming", "Learning", "Career"],
     link: "#"
   }
 ]
