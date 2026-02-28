@@ -24,7 +24,11 @@ import {
   Sparkles,
   Zap,
   Globe,
-  Send
+  Send,
+  Award,
+  FileText,
+  Calendar,
+  ArrowRight
 } from "lucide-react"
 import { useState, useEffect } from "react"
 
@@ -102,12 +106,84 @@ const socialLinks = [
   { icon: Twitter, href: "https://x.com/zackmoon321", label: "Twitter", username: "@zackmoon321" },
 ]
 
+const certificates = [
+  {
+    title: "Frontend Development",
+    issuer: "Brototype Cross Roads",
+    date: "2024",
+    credential: "Online Learning Program",
+    image: "/cert-frontend.jpg",
+    link: "#"
+  },
+  {
+    title: "C Programming",
+    issuer: "Brototype",
+    date: "2024",
+    credential: "Foundation Course",
+    image: "/cert-c.jpg",
+    link: "#"
+  },
+  {
+    title: "Java Programming",
+    issuer: "Brototype",
+    date: "2024",
+    credential: "Foundation Course",
+    image: "/cert-java.jpg",
+    link: "#"
+  },
+  {
+    title: "Web Design Fundamentals",
+    issuer: "Online Certification",
+    date: "2024",
+    credential: "HTML, CSS & JavaScript",
+    image: "/cert-web.jpg",
+    link: "#"
+  }
+]
+
+const blogs = [
+  {
+    title: "Getting Started with Frontend Development",
+    excerpt: "A beginner's guide to starting your journey in frontend development. Learn about HTML, CSS, JavaScript and the tools you need to build modern websites.",
+    date: "Dec 15, 2024",
+    readTime: "5 min read",
+    tags: ["Frontend", "Beginner", "Web Development"],
+    link: "#"
+  },
+  {
+    title: "Why I Chose to Learn Web Development",
+    excerpt: "My personal journey into web development, the challenges I faced, and how I overcame them. Tips for anyone starting their coding journey.",
+    date: "Dec 10, 2024",
+    readTime: "4 min read",
+    tags: ["Career", "Learning", "Personal"],
+    link: "#"
+  },
+  {
+    title: "CSS Tips and Tricks for Beginners",
+    excerpt: "Useful CSS techniques that every beginner should know. From flexbox to grid, learn how to create beautiful layouts with ease.",
+    date: "Dec 5, 2024",
+    readTime: "6 min read",
+    tags: ["CSS", "Tips", "Tutorial"],
+    link: "#"
+  },
+  {
+    title: "Building Responsive Websites in 2024",
+    excerpt: "Best practices for creating responsive websites that work perfectly on all devices. Mobile-first approach and modern CSS techniques.",
+    date: "Nov 28, 2024",
+    readTime: "7 min read",
+    tags: ["Responsive", "CSS", "Mobile"],
+    link: "#"
+  }
+]
+
 const navLinks = [
   { href: "#home", label: "Home" },
   { href: "#about", label: "About" },
   { href: "#skills", label: "Skills" },
   { href: "#services", label: "Services" },
   { href: "#projects", label: "Projects" },
+  { href: "#certificates", label: "Certificates" },
+  { href: "#blogs", label: "Blogs" },
   { href: "#contact", label: "Contact" },
 ]
 
@@ -511,6 +587,122 @@ export default function Portfolio() {
                 <a href="https://github.com/mnuhman?tab=repositories" target="_blank" rel="noopener noreferrer" className="gap-2">
                   <Github className="h-4 w-4" />
                   View All Projects on GitHub
+                </a>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Certificates Section */}
+      <section id="certificates" className="py-20 md:py-32 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <Badge variant="outline" className="mb-4">Certificates</Badge>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                My <span className="text-primary">Achievements</span>
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Certifications and courses that have helped me grow as a developer
+              </p>
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {certificates.map((cert) => (
+                <Card
+                  key={cert.title}
+                  className="group overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+                >
+                  <div className="aspect-[4/3] bg-gradient-to-br from-primary/20 to-primary/5 relative overflow-hidden flex items-center justify-center">
+                    <Award className="h-16 w-16 text-primary/40 group-hover:scale-110 transition-transform duration-300" />
+                    <div className="absolute top-3 right-3">
+                      <Badge variant="secondary" className="text-xs">
+                        {cert.date}
+                      </Badge>
+                    </div>
+                  </div>
+                  <CardHeader className="pb-2">
+                    <CardTitle className="text-lg leading-tight">{cert.title}</CardTitle>
+                    <CardDescription className="text-primary font-medium">
+                      {cert.issuer}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-muted-foreground mb-3">{cert.credential}</p>
+                    <Button variant="ghost" size="sm" className="w-full group-hover:bg-primary/10" asChild>
+                      <a href={cert.link} target="_blank" rel="noopener noreferrer">
+                        <ExternalLink className="h-4 w-4 mr-2" />
+                        View Certificate
+                      </a>
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Blogs Section */}
+      <section id="blogs" className="py-20 md:py-32">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <Badge variant="outline" className="mb-4">Blog</Badge>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Latest <span className="text-primary">Articles</span>
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Thoughts, tutorials, and insights from my learning journey
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              {blogs.map((blog) => (
+                <Card
+                  key={blog.title}
+                  className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+                >
+                  <CardHeader>
+                    <div className="flex items-center gap-4 text-sm text-muted-foreground mb-2">
+                      <span className="flex items-center gap-1">
+                        <Calendar className="h-4 w-4" />
+                        {blog.date}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <FileText className="h-4 w-4" />
+                        {blog.readTime}
+                      </span>
+                    </div>
+                    <CardTitle className="text-xl group-hover:text-primary transition-colors">
+                      {blog.title}
+                    </CardTitle>
+                    <CardDescription className="line-clamp-2">
+                      {blog.excerpt}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex items-center justify-between">
+                      <div className="flex flex-wrap gap-2">
+                        {blog.tags.map((tag) => (
+                          <Badge key={tag} variant="secondary" className="text-xs">
+                            {tag}
+                          </Badge>
+                        ))}
+                      </div>
+                      <ArrowRight className="h-5 w-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
+            <div className="text-center mt-12">
+              <Button variant="outline" asChild>
+                <a href="#" className="gap-2">
+                  <FileText className="h-4 w-4" />
+                  View All Articles
                 </a>
               </Button>
             </div>
