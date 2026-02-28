@@ -132,12 +132,12 @@ const certificates = [
     link: "https://www.linkedin.com/posts/mohammed-nuhman-m-167576338_english-activity-7433342475953635331-8dDS"
   },
   {
-    title: "Frontend Development",
-    issuer: "Brototype Cross Roads",
-    date: "2024",
-    credential: "Online Learning Program",
-    image: "/cert-frontend.jpg",
-    link: "#"
+    title: "HP LIFE Certificate",
+    issuer: "HP LIFE",
+    date: "2025",
+    credential: "Business & Technology Skills",
+    image: "https://api.life-global.org/learning/api/certificates/ecc32202-6450-4a55-aa14-34acb1c7c76d/preview",
+    link: "https://www.life-global.org/certificate/ecc32202-6450-4a55-aa14-34acb1c7c76d"
   }
 ]
 
