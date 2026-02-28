@@ -70,7 +70,7 @@ bun run build
 bun start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to see your application running.
+Open https://my-project-ten-steel.vercel.app/ to see your application running.
 
 ## 🤖 Powered by Z.ai
 
