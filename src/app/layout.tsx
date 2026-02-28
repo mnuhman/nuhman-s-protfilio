@@ -14,24 +14,24 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Z.ai Code Scaffold - AI-Powered Development",
-  description: "Modern Next.js scaffold optimized for AI-powered development with Z.ai. Built with TypeScript, Tailwind CSS, and shadcn/ui.",
-  keywords: ["Z.ai", "Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "AI development", "React"],
-  authors: [{ name: "Z.ai Team" }],
+  title: "Mohammed Nuhman M | Frontend Developer",
+  description: "Frontend Developer specializing in creating modern, responsive web applications. Skilled in HTML, CSS, JavaScript, TypeScript, React, and Next.js.",
+  keywords: ["Frontend Developer", "Web Developer", "JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS", "Portfolio"],
+  authors: [{ name: "Mohammed Nuhman M" }],
   icons: {
-    icon: "https://z-cdn.chatglm.cn/z-ai/static/logo.svg",
+    icon: "/favicon.ico",
   },
   openGraph: {
-    title: "Z.ai Code Scaffold",
-    description: "AI-powered development with modern React stack",
-    url: "https://chat.z.ai",
-    siteName: "Z.ai",
+    title: "Mohammed Nuhman M | Frontend Developer",
+    description: "Frontend Developer specializing in creating modern, responsive web applications.",
+    url: "https://mnuhman.github.io",
+    siteName: "Mohammed Nuhman Portfolio",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Z.ai Code Scaffold",
-    description: "AI-powered development with modern React stack",
+    title: "Mohammed Nuhman M | Frontend Developer",
+    description: "Frontend Developer specializing in creating modern, responsive web applications.",
   },
 };
 
