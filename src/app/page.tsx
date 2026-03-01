@@ -82,12 +82,12 @@ const services = [
 
 const projects = [
   {
-    title: "Portfolio Website",
-    description: "A modern, responsive portfolio website showcasing my skills and projects with smooth animations and clean design.",
-    tags: ["HTML", "CSS", "JavaScript"],
-    link: "https://mnuhman.github.io/file/",
-    github: "https://github.com/mnuhman/file",
-    image: "/project-portfolio.jpg"
+    title: "Ribath Library",
+    description: "A library management system for organizing and managing book collections. Features book cataloging, search functionality, and a clean user interface.",
+    tags: ["Web App", "Library System"],
+    link: "https://github.com/mnuhman/ribathlaibrary",
+    github: "https://github.com/mnuhman/ribathlaibrary",
+    image: "/project-ribath.jpg"
   },
   {
     title: "Donchat",
@@ -98,6 +98,14 @@ const projects = [
     image: "/project-donchat.jpg"
   },
   {
+    title: "Portfolio Website",
+    description: "A modern, responsive portfolio website showcasing my skills and projects with smooth animations and clean design.",
+    tags: ["HTML", "CSS", "JavaScript"],
+    link: "https://mnuhman.github.io/file/",
+    github: "https://github.com/mnuhman/file",
+    image: "/project-portfolio.jpg"
+  },
+  {
     title: "Spendwise Tracker",
     description: "A smart expense tracking application to help users manage their finances and track spending habits effectively.",
     tags: ["JavaScript", "CSS", "Web App"],
@@ -106,8 +114,8 @@ const projects = [
     image: "/project-tracker.jpg"
   },
   {
-    title: "Nuhman's Portfolio (Next.js)",
-    description: "My professional portfolio built with Next.js, TypeScript, and Tailwind CSS. Features dark theme, certificates, blog section, and responsive design.",
+    title: "Professional Portfolio (Next.js)",
+    description: "My professional portfolio built with Next.js, TypeScript, and Tailwind CSS. Features dark theme, certificates showcase, blog section, and fully responsive design.",
     tags: ["Next.js", "TypeScript", "Tailwind CSS"],
     link: "https://my-project-ten-steel.vercel.app",
     github: "https://github.com/mnuhman/nuhman-s-protfilio",
