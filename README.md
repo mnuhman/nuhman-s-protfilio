@@ -70,7 +70,7 @@ bun run build
 bun start
 ```
 
-Open https://my-project-ten-steel.vercel.app/ to see your application running.
+Open https://mnuhman.vercel.app/ to see your application running.
 
 ## 🤖 Powered by Z.ai
 
