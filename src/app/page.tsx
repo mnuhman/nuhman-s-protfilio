@@ -83,43 +83,51 @@ const services = [
 const projects = [
   {
     title: "Ribath Library",
-    description: "A library management system for organizing and managing book collections. Features book cataloging, search functionality, and a clean user interface.",
-    tags: ["Web App", "Library System"],
+    description: "A library management system for organizing and managing book collections. Features book cataloging, search functionality, and a user-friendly interface for managing library operations.",
+    tags: ["Web App", "Library System", "HTML", "CSS"],
     link: "https://github.com/mnuhman/ribathlaibrary",
     github: "https://github.com/mnuhman/ribathlaibrary",
     image: "/project-ribath.jpg"
   },
   {
     title: "Donchat",
-    description: "A chat application project built with modern web technologies. Features real-time messaging and a clean user interface.",
-    tags: ["Chat App", "Web Application"],
+    description: "A real-time chat application built with modern web technologies. Features instant messaging, clean UI design, and seamless communication experience.",
+    tags: ["Chat App", "Web Application", "JavaScript"],
     link: "https://github.com/mnuhman/Donchat",
     github: "https://github.com/mnuhman/Donchat",
     image: "/project-donchat.jpg"
   },
   {
-    title: "Portfolio Website",
-    description: "A modern, responsive portfolio website showcasing my skills and projects with smooth animations and clean design.",
-    tags: ["HTML", "CSS", "JavaScript"],
-    link: "https://mnuhman.github.io/file/",
-    github: "https://github.com/mnuhman/file",
-    image: "/project-portfolio.jpg"
-  },
-  {
     title: "Spendwise Tracker",
-    description: "A smart expense tracking application to help users manage their finances and track spending habits effectively.",
-    tags: ["JavaScript", "CSS", "Web App"],
+    description: "A smart expense tracking application to help users manage their finances. Track spending habits, categorize expenses, and gain insights into your financial patterns.",
+    tags: ["JavaScript", "CSS", "Finance", "Web App"],
     link: "https://github.com/mnuhman/spendwisetarcker",
     github: "https://github.com/mnuhman/spendwisetarcker",
     image: "/project-tracker.jpg"
   },
   {
-    title: "Professional Portfolio (Next.js)",
-    description: "My professional portfolio built with Next.js, TypeScript, and Tailwind CSS. Features dark theme, certificates showcase, blog section, and fully responsive design.",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS"],
-    link: "https://my-project-ten-steel.vercel.app",
+    title: "Prot - Portfolio",
+    description: "A personal portfolio project showcasing web development skills and projects. Clean design with smooth animations and responsive layout.",
+    tags: ["HTML", "CSS", "JavaScript", "Portfolio"],
+    link: "https://github.com/mnuhman/prot",
+    github: "https://github.com/mnuhman/prot",
+    image: "/project-prot.jpg"
+  },
+  {
+    title: "Nuhman's Portfolio (Next.js)",
+    description: "Professional portfolio built with Next.js 16, TypeScript, and Tailwind CSS. Features dark theme, certificates showcase, blog section, and fully responsive modern design.",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "React"],
+    link: "https://my-project-henna-zeta-94.vercel.app",
     github: "https://github.com/mnuhman/nuhman-s-protfilio",
     image: "/project-next-portfolio.jpg"
+  },
+  {
+    title: "Classic Portfolio Website",
+    description: "A responsive portfolio website built with HTML, CSS, and JavaScript. Showcases skills, projects, and contact information with smooth animations.",
+    tags: ["HTML", "CSS", "JavaScript"],
+    link: "https://mnuhman.github.io/file/",
+    github: "https://github.com/mnuhman/file",
+    image: "/project-portfolio.jpg"
   }
 ]
 
