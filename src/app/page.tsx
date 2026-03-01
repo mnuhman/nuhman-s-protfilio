@@ -90,12 +90,28 @@ const projects = [
     image: "/project-portfolio.jpg"
   },
   {
+    title: "Donchat",
+    description: "A chat application project built with modern web technologies. Features real-time messaging and a clean user interface.",
+    tags: ["Chat App", "Web Application"],
+    link: "https://github.com/mnuhman/Donchat",
+    github: "https://github.com/mnuhman/Donchat",
+    image: "/project-donchat.jpg"
+  },
+  {
     title: "Spendwise Tracker",
     description: "A smart expense tracking application to help users manage their finances and track spending habits effectively.",
     tags: ["JavaScript", "CSS", "Web App"],
     link: "https://github.com/mnuhman/spendwisetarcker",
     github: "https://github.com/mnuhman/spendwisetarcker",
     image: "/project-tracker.jpg"
+  },
+  {
+    title: "Nuhman's Portfolio (Next.js)",
+    description: "My professional portfolio built with Next.js, TypeScript, and Tailwind CSS. Features dark theme, certificates, blog section, and responsive design.",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS"],
+    link: "https://my-project-ten-steel.vercel.app",
+    github: "https://github.com/mnuhman/nuhman-s-protfilio",
+    image: "/project-next-portfolio.jpg"
   }
 ]
 
