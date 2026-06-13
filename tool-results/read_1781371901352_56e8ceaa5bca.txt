@@ -1,0 +1,872 @@
+     1→'use client'
+     2→
+     3→import { Button } from "@/components/ui/button"
+     4→import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+     5→import { Badge } from "@/components/ui/badge"
+     6→import { Progress } from "@/components/ui/progress"
+     7→import { Separator } from "@/components/ui/separator"
+     8→import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+     9→import {
+    10→  Github,
+    11→  Linkedin,
+    12→  Instagram,
+    13→  Twitter,
+    14→  Mail,
+    15→  Phone,
+    16→  MapPin,
+    17→  Code2,
+    18→  Palette,
+    19→  TrendingUp,
+    20→  ExternalLink,
+    21→  Menu,
+    22→  X,
+    23→  ChevronDown,
+    24→  Sparkles,
+    25→  Zap,
+    26→  Globe,
+    27→  Send,
+    28→  Award,
+    29→  FileText,
+    30→  Calendar,
+    31→  ArrowRight
+    32→} from "lucide-react"
+    33→import { useState, useEffect } from "react"
+    34→
+    35→// Portfolio Data
+    36→const personalInfo = {
+    37→  name: "Mohammed Nuhman M",
+    38→  title: "Frontend Developer",
+    39→  tagline: "Crafting Digital Experiences with Code & Creativity",
+    40→  email: "mohammednuhman333@gmail.com",
+    41→  location: "Malappuram, Kerala",
+    42→  bio: `Hello! I am Mohammed Nuhman, a frontend developer currently studying at Brototype Cross Roads. 
+    43→        I love technology and design, and I enjoy creating websites that look good and work well.
+    44→        My interest in web development started during my studies when I became curious about how 
+    45→        websites are built and how people interact with them. Learning how lines of code turn into 
+    46→        interactive websites fascinated me. I've built a solid foundation in programming languages 
+    47→        like C and Java, and I'm continuously expanding my skills in modern web technologies.`,
+    48→  avatar: "https://media.licdn.com/dms/image/v2/D4E03AQFWvFLvQbDazg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1731561139861?e=2147483647&v=beta&t=YP2WSgkqVkVOv9mpRa1k5TUa4wC8FZnZmMbqXR_5oto"
+    49→}
+    50→
+    51→const skills = [
+    52→  { name: "HTML5", level: 90, category: "frontend" },
+    53→  { name: "CSS3", level: 85, category: "frontend" },
+    54→  { name: "JavaScript", level: 80, category: "frontend" },
+    55→  { name: "TypeScript", level: 75, category: "frontend" },
+    56→  { name: "React", level: 70, category: "frontend" },
+    57→  { name: "Next.js", level: 65, category: "frontend" },
+    58→  { name: "Tailwind CSS", level: 85, category: "frontend" },
+    59→  { name: "Git & GitHub", level: 75, category: "tools" },
+    60→]
+    61→
+    62→const services = [
+    63→  {
+    64→    icon: Code2,
+    65→    title: "Web Development",
+    66→    description: "I use the latest web technologies and development tools to create websites that are fast, secure, and scalable. I provide ongoing support and maintenance services to ensure your website remains up-to-date and performs optimally.",
+    67→    features: ["Responsive Design", "Modern Frameworks", "Performance Optimization", "Cross-browser Compatibility"]
+    68→  },
+    69→  {
+    70→    icon: Palette,
+    71→    title: "Graphic Design",
+    72→    description: "Creating visual content to communicate messages effectively using typography, imagery, color, and layout to convey ideas and capture attention. Bringing brands to life with stunning visual identities.",
+    73→    features: ["Brand Identity", "UI/UX Design", "Social Media Graphics", "Print Design"]
+    74→  },
+    75→  {
+    76→    icon: TrendingUp,
+    77→    title: "Digital Marketing",
+    78→    description: "Helping businesses reach their target audience online using a variety of strategies. In today's digital age, a strong online presence is essential for success with cost-effective and scalable methods.",
+    79→    features: ["SEO Optimization", "Social Media Marketing", "Content Strategy", "Analytics & Reporting"]
+    80→  }
+    81→]
+    82→
+    83→const projects = [
+    84→  {
+    85→    title: "Portfolio Website",
+    86→    description: "A modern, responsive portfolio website showcasing my skills and projects with smooth animations and clean design.",
+    87→    tags: ["HTML", "CSS", "JavaScript"],
+    88→    link: "https://mnuhman.github.io/file/",
+    89→    github: "https://github.com/mnuhman/file",
+    90→    image: "/project-portfolio.jpg"
+    91→  },
+    92→  {
+    93→    title: "Spendwise Tracker",
+    94→    description: "A smart expense tracking application to help users manage their finances and track spending habits effectively.",
+    95→    tags: ["JavaScript", "CSS", "Web App"],
+    96→    link: "https://github.com/mnuhman/spendwisetarcker",
+    97→    github: "https://github.com/mnuhman/spendwisetarcker",
+    98→    image: "/project-tracker.jpg"
+    99→  }
+   100→]
+   101→
+   102→const socialLinks = [
+   103→  { icon: Github, href: "https://github.com/mnuhman", label: "GitHub", username: "@mnuhman" },
+   104→  { icon: Linkedin, href: "https://www.linkedin.com/in/mohammed-nuhman-m-167576338/", label: "LinkedIn", username: "Mohammed Nuhman M" },
+   105→  { icon: Instagram, href: "https://www.instagram.com/nuhman_tech/", label: "Instagram", username: "@nuhman_tech" },
+   106→  { icon: Twitter, href: "https://x.com/zackmoon321", label: "Twitter", username: "@zackmoon321" },
+   107→]
+   108→
+   109→const certificates = [
+   110→  {
+   111→    title: "HTML Certification",
+   112→    issuer: "Online Certification",
+   113→    date: "2025",
+   114→    credential: "HTML Fundamentals",
+   115→    image: "https://media.licdn.com/dms/image/v2/D4E22AQHoDjkep60lHg/feedshare-shrink_800/B4EZXcHqXDHcAg-/0/1743154752664?e=2147483647&v=beta&t=hCXY3Cphdw9c2O05p8S_odtQVV2i0mtszmeWtHCb8lk",
+   116→    link: "https://www.linkedin.com/posts/mohammed-nuhman-m-167576338_html-certification-activity-7311320957053292544-eemZ"
+   117→  },
+   118→  {
+   119→    title: "Basic Programming Certification",
+   120→    issuer: "Online Certification",
+   121→    date: "2025",
+   122→    credential: "Programming Fundamentals",
+   123→    image: "https://media.licdn.com/dms/image/v2/D4E22AQFA3LerE4CifA/feedshare-shrink_800/B4EZWyRYpnHcAg-/0/1742452659241?e=2147483647&v=beta&t=8ONJbKQnqP9JiVCVfGZeQyit6ylJUllnNoEH5dirEDI",
+   124→    link: "https://www.linkedin.com/posts/mohammed-nuhman-m-167576338_basic-programming-certification-activity-7308376167986720769-tN6k"
+   125→  },
+   126→  {
+   127→    title: "English Certification",
+   128→    issuer: "Online Certification",
+   129→    date: "2025",
+   130→    credential: "English Language Proficiency",
+   131→    image: "https://media.licdn.com/dms/image/v2/D5622AQGmCdaWljh5xw/feedshare-shrink_800/B56ZyiLb3NGoAg-/0/1772247432888?e=2147483647&v=beta&t=gFOwN1kWZW5bAABh2uKJCMYmADrt44Hejw4YigFFHRQ",
+   132→    link: "https://www.linkedin.com/posts/mohammed-nuhman-m-167576338_activity-7433344502209232896-Gn7D"
+   133→  },
+   134→  {
+   135→    title: "HP LIFE Certificate",
+   136→    issuer: "HP LIFE",
+   137→    date: "2025",
+   138→    credential: "Business & Technology Skills",
+   139→    image: "https://api.life-global.org/learning/api/certificates/ecc32202-6450-4a55-aa14-34acb1c7c76d/preview",
+   140→    link: "https://www.life-global.org/certificate/ecc32202-6450-4a55-aa14-34acb1c7c76d"
+   141→  }
+   142→]
+   143→
+   144→const blogs = [
+   145→  {
+   146→    title: "My Journey into Frontend Development",
+   147→    excerpt: "How I discovered my passion for web development and started my learning journey at Brototype Cross Roads. From curiosity about websites to building interactive projects, here's my story of growth and learning.",
+   148→    date: "Feb 28, 2025",
+   149→    readTime: "4 min read",
+   150→    tags: ["Career", "Learning", "Personal"],
+   151→    link: "#"
+   152→  },
+   153→  {
+   154→    title: "HTML & CSS: The Foundation of Web Development",
+   155→    excerpt: "A beginner-friendly guide to understanding HTML and CSS. Learn how these two technologies work together to create beautiful, structured websites. Tips and tricks I learned during my certification journey.",
+   156→    date: "Feb 20, 2025",
+   157→    readTime: "6 min read",
+   158→    tags: ["HTML", "CSS", "Beginner"],
+   159→    link: "#"
+   160→  },
+   161→  {
+   162→    title: "5 CSS Tips Every Beginner Should Know",
+   163→    excerpt: "Practical CSS techniques that helped me improve my web designs. From Flexbox layouts to responsive units, these tips will make your styling more efficient and your websites more beautiful.",
+   164→    date: "Feb 10, 2025",
+   165→    readTime: "5 min read",
+   166→    tags: ["CSS", "Tips", "Tutorial"],
+   167→    link: "#"
+   168→  },
+   169→  {
+   170→    title: "Why Learning Programming Fundamentals Matters",
+   171→    excerpt: "Before diving into web frameworks, understanding programming basics is crucial. How learning C and Java helped me become a better frontend developer and problem solver.",
+   172→    date: "Jan 28, 2025",
+   173→    readTime: "5 min read",
+   174→    tags: ["Programming", "Learning", "Career"],
+   175→    link: "#"
+   176→  }
+   177→]
+   178→
+   179→const navLinks = [
+   180→  { href: "#home", label: "Home" },
+   181→  { href: "#about", label: "About" },
+   182→  { href: "#skills", label: "Skills" },
+   183→  { href: "#services", label: "Services" },
+   184→  { href: "#projects", label: "Projects" },
+   185→  { href: "#certificates", label: "Certificates" },
+   186→  { href: "#blogs", label: "Blogs" },
+   187→  { href: "#contact", label: "Contact" },
+   188→]
+   189→
+   190→export default function Portfolio() {
+   191→  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+   192→  const [activeSection, setActiveSection] = useState("home")
+   193→  const [scrolled, setScrolled] = useState(false)
+   194→
+   195→  useEffect(() => {
+   196→    const handleScroll = () => {
+   197→      setScrolled(window.scrollY > 50)
+   198→      
+   199→      // Update active section based on scroll position
+   200→      const sections = navLinks.map(link => link.href.slice(1))
+   201→      for (const section of sections.reverse()) {
+   202→        const element = document.getElementById(section)
+   203→        if (element) {
+   204→          const rect = element.getBoundingClientRect()
+   205→          if (rect.top <= 100) {
+   206→            setActiveSection(section)
+   207→            break
+   208→          }
+   209→        }
+   210→      }
+   211→    }
+   212→    window.addEventListener("scroll", handleScroll)
+   213→    return () => window.removeEventListener("scroll", handleScroll)
+   214→  }, [])
+   215→
+   216→  const scrollToSection = (href: string) => {
+   217→    const element = document.getElementById(href.slice(1))
+   218→    if (element) {
+   219→      element.scrollIntoView({ behavior: "smooth" })
+   220→    }
+   221→    setMobileMenuOpen(false)
+   222→  }
+   223→
+   224→  return (
+   225→    <div className="min-h-screen bg-background flex flex-col">
+   226→      {/* Navigation */}
+   227→      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+   228→        scrolled ? "bg-background/80 backdrop-blur-lg border-b shadow-sm" : "bg-transparent"
+   229→      }`}>
+   230→        <div className="container mx-auto px-4 py-4">
+   231→          <div className="flex items-center justify-between">
+   232→            <a href="#home" onClick={(e) => { e.preventDefault(); scrollToSection("#home") }} className="text-2xl font-bold tracking-tight">
+   233→              Nuhman<span className="text-primary">.</span>
+   234→            </a>
+   235→
+   236→            {/* Desktop Navigation */}
+   237→            <div className="hidden md:flex items-center gap-1">
+   238→              {navLinks.map((link) => (
+   239→                <Button
+   240→                  key={link.href}
+   241→                  variant="ghost"
+   242→                  size="sm"
+   243→                  onClick={() => scrollToSection(link.href)}
+   244→                  className={`transition-all ${activeSection === link.href.slice(1) ? "bg-primary/10 text-primary" : ""}`}
+   245→                >
+   246→                  {link.label}
+   247→                </Button>
+   248→              ))}
+   249→            </div>
+   250→
+   251→            {/* Mobile Menu Button */}
+   252→            <Button
+   253→              variant="ghost"
+   254→              size="icon"
+   255→              className="md:hidden"
+   256→              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+   257→            >
+   258→              {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+   259→            </Button>
+   260→          </div>
+   261→
+   262→          {/* Mobile Navigation */}
+   263→          {mobileMenuOpen && (
+   264→            <div className="md:hidden mt-4 pb-4 border-t pt-4">
+   265→              <div className="flex flex-col gap-2">
+   266→                {navLinks.map((link) => (
+   267→                  <Button
+   268→                    key={link.href}
+   269→                    variant="ghost"
+   270→                    onClick={() => scrollToSection(link.href)}
+   271→                    className={`justify-start ${activeSection === link.href.slice(1) ? "bg-primary/10 text-primary" : ""}`}
+   272→                  >
+   273→                    {link.label}
+   274→                  </Button>
+   275→                ))}
+   276→              </div>
+   277→            </div>
+   278→          )}
+   279→        </div>
+   280→      </nav>
+   281→
+   282→      {/* Hero Section */}
+   283→      <section id="home" className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+   284→        {/* Background decoration */}
+   285→        <div className="absolute inset-0 -z-10">
+   286→          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+   287→          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
+   288→        </div>
+   289→
+   290→        <div className="container mx-auto px-4">
+   291→          <div className="max-w-4xl mx-auto text-center">
+   292→            <div className="mb-8 animate-in fade-in duration-700">
+   293→              <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
+   294→                <Sparkles className="h-4 w-4" />
+   295→                Available for Freelance Projects
+   296→              </div>
+   297→            </div>
+   298→
+   299→            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
+   300→              Hi, I&apos;m{" "}
+   301→              <span className="text-primary relative">
+   302→                {personalInfo.name}
+   303→                <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 300 12" fill="none">
+   304→                  <path d="M2 10C50 4 150 2 298 10" stroke="currentColor" strokeWidth="3" strokeLinecap="round" className="text-primary/30"/>
+   305→                </svg>
+   306→              </span>
+   307→            </h1>
+   308→
+   309→            <div className="text-xl sm:text-2xl md:text-3xl text-muted-foreground mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-150">
+   310→              <span className="font-medium text-foreground">{personalInfo.title}</span>
+   311→            </div>
+   312→
+   313→            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">
+   314→              {personalInfo.tagline}
+   315→            </p>
+   316→
+   317→            <div className="flex flex-wrap items-center justify-center gap-4 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-500">
+   318→              <Button size="lg" onClick={() => scrollToSection("#contact")} className="gap-2">
+   319→                <Send className="h-4 w-4" />
+   320→                Get In Touch
+   321→              </Button>
+   322→              <Button size="lg" variant="outline" onClick={() => scrollToSection("#projects")} className="gap-2">
+   323→                <ExternalLink className="h-4 w-4" />
+   324→                View Projects
+   325→              </Button>
+   326→            </div>
+   327→
+   328→            {/* Social Links */}
+   329→            <div className="flex items-center justify-center gap-4 mt-10 animate-in fade-in duration-700 delay-700">
+   330→              {socialLinks.map((social) => (
+   331→                <a
+   332→                  key={social.label}
+   333→                  href={social.href}
+   334→                  target="_blank"
+   335→                  rel="noopener noreferrer"
+   336→                  className="p-3 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110"
+   337→                >
+   338→                  <social.icon className="h-5 w-5" />
+   339→                </a>
+   340→              ))}
+   341→            </div>
+   342→
+   343→            {/* Scroll indicator */}
+   344→            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+   345→              <ChevronDown className="h-6 w-6 text-muted-foreground" />
+   346→            </div>
+   347→          </div>
+   348→        </div>
+   349→      </section>
+   350→
+   351→      {/* About Section */}
+   352→      <section id="about" className="py-20 md:py-32 bg-muted/30">
+   353→        <div className="container mx-auto px-4">
+   354→          <div className="max-w-6xl mx-auto">
+   355→            <div className="text-center mb-16">
+   356→              <Badge variant="outline" className="mb-4">About Me</Badge>
+   357→              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+   358→                Know Me <span className="text-primary">Better</span>
+   359→              </h2>
+   360→            </div>
+   361→
+   362→            <div className="grid md:grid-cols-2 gap-12 items-center">
+   363→              <div className="relative">
+   364→                <div className="aspect-square max-w-md mx-auto relative">
+   365→                  <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 rounded-3xl transform rotate-6" />
+   366→                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-3xl transform -rotate-3" />
+   367→                  <div className="relative bg-card rounded-3xl overflow-hidden aspect-square flex items-center justify-center border">
+   368→                    <Avatar className="w-48 h-48">
+   369→                      <AvatarImage src={personalInfo.avatar} alt={personalInfo.name} />
+   370→                      <AvatarFallback className="text-6xl bg-primary/10 text-primary font-bold">
+   371→                        MN
+   372→                      </AvatarFallback>
+   373→                    </Avatar>
+   374→                  </div>
+   375→                </div>
+   376→              </div>
+   377→
+   378→              <div className="space-y-6">
+   379→                <div>
+   380→                  <h3 className="text-2xl font-bold mb-4">
+   381→                    I&apos;m {personalInfo.name}, a{" "}
+   382→                    <span className="text-primary">{personalInfo.title}</span>
+   383→                  </h3>
+   384→                  <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
+   385→                    {personalInfo.bio}
+   386→                  </p>
+   387→                </div>
+   388→
+   389→                <Separator />
+   390→
+   391→                <div className="grid grid-cols-2 gap-4">
+   392→                  <div className="flex items-center gap-3">
+   393→                    <div className="p-2 rounded-lg bg-primary/10">
+   394→                      <Mail className="h-5 w-5 text-primary" />
+   395→                    </div>
+   396→                    <div>
+   397→                      <p className="text-sm text-muted-foreground">Email</p>
+   398→                      <p className="font-medium text-sm">{personalInfo.email}</p>
+   399→                    </div>
+   400→                  </div>
+   401→                  <div className="flex items-center gap-3">
+   402→                    <div className="p-2 rounded-lg bg-primary/10">
+   403→                    <MapPin className="h-5 w-5 text-primary" />
+   404→                    </div>
+   405→                    <div>
+   406→                      <p className="text-sm text-muted-foreground">Location</p>
+   407→                      <p className="font-medium">{personalInfo.location}</p>
+   408→                    </div>
+   409→                  </div>
+   410→                  <div className="flex items-center gap-3">
+   411→                    <div className="p-2 rounded-lg bg-primary/10">
+   412→                      <Globe className="h-5 w-5 text-primary" />
+   413→                    </div>
+   414→                    <div>
+   415→                      <p className="text-sm text-muted-foreground">Status</p>
+   416→                      <p className="font-medium">Available for Work</p>
+   417→                    </div>
+   418→                  </div>
+   419→                  <div className="flex items-center gap-3">
+   420→                    <div className="p-2 rounded-lg bg-primary/10">
+   421→                      <Zap className="h-5 w-5 text-primary" />
+   422→                    </div>
+   423→                    <div>
+   424→                      <p className="text-sm text-muted-foreground">Experience</p>
+   425→                      <p className="font-medium">Learning & Growing</p>
+   426→                    </div>
+   427→                  </div>
+   428→                </div>
+   429→
+   430→                <Button onClick={() => scrollToSection("#contact")} className="gap-2">
+   431→                  Let&apos;s Work Together
+   432→                </Button>
+   433→              </div>
+   434→            </div>
+   435→          </div>
+   436→        </div>
+   437→      </section>
+   438→
+   439→      {/* Skills Section */}
+   440→      <section id="skills" className="py-20 md:py-32">
+   441→        <div className="container mx-auto px-4">
+   442→          <div className="max-w-6xl mx-auto">
+   443→            <div className="text-center mb-16">
+   444→              <Badge variant="outline" className="mb-4">Skills</Badge>
+   445→              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+   446→                My <span className="text-primary">Expertise</span>
+   447→              </h2>
+   448→              <p className="text-muted-foreground max-w-2xl mx-auto">
+   449→                Technologies and tools I work with to bring ideas to life
+   450→              </p>
+   451→            </div>
+   452→
+   453→            <div className="grid md:grid-cols-2 gap-8">
+   454→              {skills.map((skill, index) => (
+   455→                <div
+   456→                  key={skill.name}
+   457→                  className="group p-6 rounded-2xl bg-card border hover:border-primary/50 hover:shadow-lg transition-all duration-300"
+   458→                  style={{ animationDelay: `${index * 100}ms` }}
+   459→                >
+   460→                  <div className="flex items-center justify-between mb-3">
+   461→                    <span className="font-semibold">{skill.name}</span>
+   462→                    <span className="text-sm text-muted-foreground">{skill.level}%</span>
+   463→                  </div>
+   464→                  <Progress value={skill.level} className="h-2" />
+   465→                </div>
+   466→              ))}
+   467→            </div>
+   468→
+   469→            {/* Quick Skills Tags */}
+   470→            <div className="mt-12 text-center">
+   471→              <p className="text-sm text-muted-foreground mb-4">Other technologies I work with:</p>
+   472→              <div className="flex flex-wrap justify-center gap-2">
+   473→                {["C", "Java", "Responsive Design", "REST APIs", "JSON", "DOM Manipulation", "Flexbox", "Grid", "Animations"].map((tag) => (
+   474→                  <Badge key={tag} variant="secondary" className="px-4 py-1">
+   475→                    {tag}
+   476→                  </Badge>
+   477→                ))}
+   478→              </div>
+   479→            </div>
+   480→          </div>
+   481→        </div>
+   482→      </section>
+   483→
+   484→      {/* Services Section */}
+   485→      <section id="services" className="py-20 md:py-32 bg-muted/30">
+   486→        <div className="container mx-auto px-4">
+   487→          <div className="max-w-6xl mx-auto">
+   488→            <div className="text-center mb-16">
+   489→              <Badge variant="outline" className="mb-4">Services</Badge>
+   490→              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+   491→                What I <span className="text-primary">Offer</span>
+   492→              </h2>
+   493→              <p className="text-muted-foreground max-w-2xl mx-auto">
+   494→                Professional services tailored to help your business grow online
+   495→              </p>
+   496→            </div>
+   497→
+   498→            <div className="grid md:grid-cols-3 gap-8">
+   499→              {services.map((service, index) => (
+   500→                <Card
+   501→                  key={service.title}
+   502→                  className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-0 bg-card"
+   503→                >
+   504→                  <CardHeader>
+   505→                    <div className="p-4 rounded-2xl bg-primary/10 w-fit mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
+   506→                      <service.icon className="h-8 w-8" />
+   507→                    </div>
+   508→                    <CardTitle className="text-xl">{service.title}</CardTitle>
+   509→                  </CardHeader>
+   510→                  <CardContent>
+   511→                    <CardDescription className="text-muted-foreground mb-4">
+   512→                      {service.description}
+   513→                    </CardDescription>
+   514→                    <div className="flex flex-wrap gap-2">
+   515→                      {service.features.map((feature) => (
+   516→                        <Badge key={feature} variant="outline" className="text-xs">
+   517→                          {feature}
+   518→                        </Badge>
+   519→                      ))}
+   520→                    </div>
+   521→                  </CardContent>
+   522→                </Card>
+   523→              ))}
+   524→            </div>
+   525→          </div>
+   526→        </div>
+   527→      </section>
+   528→
+   529→      {/* Projects Section */}
+   530→      <section id="projects" className="py-20 md:py-32">
+   531→        <div className="container mx-auto px-4">
+   532→          <div className="max-w-6xl mx-auto">
+   533→            <div className="text-center mb-16">
+   534→              <Badge variant="outline" className="mb-4">Projects</Badge>
+   535→              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+   536→                My <span className="text-primary">Work</span>
+   537→              </h2>
+   538→              <p className="text-muted-foreground max-w-2xl mx-auto">
+   539→                A collection of projects I&apos;ve built and contributed to
+   540→              </p>
+   541→            </div>
+   542→
+   543→            <div className="grid md:grid-cols-2 gap-8">
+   544→              {projects.map((project) => (
+   545→                <Card
+   546→                  key={project.title}
+   547→                  className="group overflow-hidden hover:shadow-xl transition-all duration-300"
+   548→                >
+   549→                  <div className="aspect-video bg-gradient-to-br from-primary/20 to-primary/5 relative overflow-hidden">
+   550→                    <div className="absolute inset-0 flex items-center justify-center">
+   551→                      <Code2 className="h-16 w-16 text-primary/30" />
+   552→                    </div>
+   553→                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+   554→                      <Button size="sm" asChild>
+   555→                        <a href={project.link} target="_blank" rel="noopener noreferrer">
+   556→                          <ExternalLink className="h-4 w-4 mr-2" />
+   557→                          View Live
+   558→                        </a>
+   559→                      </Button>
+   560→                      <Button size="sm" variant="secondary" asChild>
+   561→                        <a href={project.github} target="_blank" rel="noopener noreferrer">
+   562→                          <Github className="h-4 w-4 mr-2" />
+   563→                          Code
+   564→                        </a>
+   565→                      </Button>
+   566→                    </div>
+   567→                  </div>
+   568→                  <CardHeader>
+   569→                    <CardTitle>{project.title}</CardTitle>
+   570→                    <CardDescription>{project.description}</CardDescription>
+   571→                  </CardHeader>
+   572→                  <CardContent>
+   573→                    <div className="flex flex-wrap gap-2">
+   574→                      {project.tags.map((tag) => (
+   575→                        <Badge key={tag} variant="secondary">
+   576→                          {tag}
+   577→                        </Badge>
+   578→                      ))}
+   579→                    </div>
+   580→                  </CardContent>
+   581→                </Card>
+   582→              ))}
+   583→            </div>
+   584→
+   585→            <div className="text-center mt-12">
+   586→              <Button variant="outline" asChild>
+   587→                <a href="https://github.com/mnuhman?tab=repositories" target="_blank" rel="noopener noreferrer" className="gap-2">
+   588→                  <Github className="h-4 w-4" />
+   589→                  View All Projects on GitHub
+   590→                </a>
+   591→              </Button>
+   592→            </div>
+   593→          </div>
+   594→        </div>
+   595→      </section>
+   596→
+   597→      {/* Certificates Section */}
+   598→      <section id="certificates" className="py-20 md:py-32 bg-muted/30">
+   599→        <div className="container mx-auto px-4">
+   600→          <div className="max-w-6xl mx-auto">
+   601→            <div className="text-center mb-16">
+   602→              <Badge variant="outline" className="mb-4">Certificates</Badge>
+   603→              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+   604→                My <span className="text-primary">Achievements</span>
+   605→              </h2>
+   606→              <p className="text-muted-foreground max-w-2xl mx-auto">
+   607→                Certifications and courses that have helped me grow as a developer
+   608→              </p>
+   609→            </div>
+   610→
+   611→            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+   612→              {certificates.map((cert) => (
+   613→                <Card
+   614→                  key={cert.title}
+   615→                  className="group overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+   616→                >
+   617→                  <div className="aspect-[4/3] bg-gradient-to-br from-primary/20 to-primary/5 relative overflow-hidden flex items-center justify-center">
+   618→                    {cert.image.startsWith("http") ? (
+   619→                      <img 
+   620→                        src={cert.image} 
+   621→                        alt={cert.title}
+   622→                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+   623→                      />
+   624→                    ) : (
+   625→                      <Award className="h-16 w-16 text-primary/40 group-hover:scale-110 transition-transform duration-300" />
+   626→                    )}
+   627→                    <div className="absolute top-3 right-3">
+   628→                      <Badge variant="secondary" className="text-xs bg-background/80 backdrop-blur-sm">
+   629→                        {cert.date}
+   630→                      </Badge>
+   631→                    </div>
+   632→                  </div>
+   633→                  <CardHeader className="pb-2">
+   634→                    <CardTitle className="text-lg leading-tight">{cert.title}</CardTitle>
+   635→                    <CardDescription className="text-primary font-medium">
+   636→                      {cert.issuer}
+   637→                    </CardDescription>
+   638→                  </CardHeader>
+   639→                  <CardContent>
+   640→                    <p className="text-sm text-muted-foreground mb-3">{cert.credential}</p>
+   641→                    <Button variant="ghost" size="sm" className="w-full group-hover:bg-primary/10" asChild>
+   642→                      <a href={cert.link} target="_blank" rel="noopener noreferrer">
+   643→                        <ExternalLink className="h-4 w-4 mr-2" />
+   644→                        View Certificate
+   645→                      </a>
+   646→                    </Button>
+   647→                  </CardContent>
+   648→                </Card>
+   649→              ))}
+   650→            </div>
+   651→          </div>
+   652→        </div>
+   653→      </section>
+   654→
+   655→      {/* Blogs Section */}
+   656→      <section id="blogs" className="py-20 md:py-32">
+   657→        <div className="container mx-auto px-4">
+   658→          <div className="max-w-6xl mx-auto">
+   659→            <div className="text-center mb-16">
+   660→              <Badge variant="outline" className="mb-4">Blog</Badge>
+   661→              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+   662→                Latest <span className="text-primary">Articles</span>
+   663→              </h2>
+   664→              <p className="text-muted-foreground max-w-2xl mx-auto">
+   665→                Thoughts, tutorials, and insights from my learning journey
+   666→              </p>
+   667→            </div>
+   668→
+   669→            <div className="grid md:grid-cols-2 gap-6">
+   670→              {blogs.map((blog) => (
+   671→                <Card
+   672→                  key={blog.title}
+   673→                  className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+   674→                >
+   675→                  <CardHeader>
+   676→                    <div className="flex items-center gap-4 text-sm text-muted-foreground mb-2">
+   677→                      <span className="flex items-center gap-1">
+   678→                        <Calendar className="h-4 w-4" />
+   679→                        {blog.date}
+   680→                      </span>
+   681→                      <span className="flex items-center gap-1">
+   682→                        <FileText className="h-4 w-4" />
+   683→                        {blog.readTime}
+   684→                      </span>
+   685→                    </div>
+   686→                    <CardTitle className="text-xl group-hover:text-primary transition-colors">
+   687→                      {blog.title}
+   688→                    </CardTitle>
+   689→                    <CardDescription className="line-clamp-2">
+   690→                      {blog.excerpt}
+   691→                    </CardDescription>
+   692→                  </CardHeader>
+   693→                  <CardContent>
+   694→                    <div className="flex items-center justify-between">
+   695→                      <div className="flex flex-wrap gap-2">
+   696→                        {blog.tags.map((tag) => (
+   697→                          <Badge key={tag} variant="secondary" className="text-xs">
+   698→                            {tag}
+   699→                          </Badge>
+   700→                        ))}
+   701→                      </div>
+   702→                      <ArrowRight className="h-5 w-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
+   703→                    </div>
+   704→                  </CardContent>
+   705→                </Card>
+   706→              ))}
+   707→            </div>
+   708→
+   709→            <div className="text-center mt-12">
+   710→              <Button variant="outline" asChild>
+   711→                <a href="#" className="gap-2">
+   712→                  <FileText className="h-4 w-4" />
+   713→                  View All Articles
+   714→                </a>
+   715→              </Button>
+   716→            </div>
+   717→          </div>
+   718→        </div>
+   719→      </section>
+   720→
+   721→      {/* Contact Section */}
+   722→      <section id="contact" className="py-20 md:py-32 bg-muted/30">
+   723→        <div className="container mx-auto px-4">
+   724→          <div className="max-w-6xl mx-auto">
+   725→            <div className="text-center mb-16">
+   726→              <Badge variant="outline" className="mb-4">Contact</Badge>
+   727→              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+   728→                Let&apos;s <span className="text-primary">Connect</span>
+   729→              </h2>
+   730→              <p className="text-muted-foreground max-w-2xl mx-auto">
+   731→                Have a project in mind or just want to say hello? Feel free to reach out!
+   732→              </p>
+   733→            </div>
+   734→
+   735→            <div className="grid lg:grid-cols-3 gap-8">
+   736→              {/* Contact Info Cards */}
+   737→              <div className="space-y-4">
+   738→                {/* Email Card */}
+   739→                <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+   740→                  <CardContent className="p-6">
+   741→                    <div className="flex items-start gap-4">
+   742→                      <div className="p-3 rounded-xl bg-primary/10 shrink-0">
+   743→                        <Mail className="h-6 w-6 text-primary" />
+   744→                      </div>
+   745→                      <div className="min-w-0">
+   746→                        <h3 className="font-semibold mb-1">Email Me</h3>
+   747→                        <a href="mailto:mohammednuhman333@gmail.com" className="text-sm text-muted-foreground hover:text-primary transition-colors break-all">
+   748→                          mohammednuhman333@gmail.com
+   749→                        </a>
+   750→                      </div>
+   751→                    </div>
+   752→                  </CardContent>
+   753→                </Card>
+   754→
+   755→                {/* Location Card */}
+   756→                <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+   757→                  <CardContent className="p-6">
+   758→                    <div className="flex items-start gap-4">
+   759→                      <div className="p-3 rounded-xl bg-primary/10 shrink-0">
+   760→                        <MapPin className="h-6 w-6 text-primary" />
+   761→                      </div>
+   762→                      <div>
+   763→                        <h3 className="font-semibold mb-1">Location</h3>
+   764→                        <p className="text-sm text-muted-foreground">Malappuram, Kerala, India</p>
+   765→                      </div>
+   766→                    </div>
+   767→                  </CardContent>
+   768→                </Card>
+   769→
+   770→                {/* Status Card */}
+   771→                <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+   772→                  <CardContent className="p-6">
+   773→                    <div className="flex items-start gap-4">
+   774→                      <div className="p-3 rounded-xl bg-green-500/10 shrink-0">
+   775→                        <Globe className="h-6 w-6 text-green-500" />
+   776→                      </div>
+   777→                      <div>
+   778→                        <h3 className="font-semibold mb-1">Availability</h3>
+   779→                        <p className="text-sm text-muted-foreground">Available for freelance projects</p>
+   780→                        <Badge variant="outline" className="mt-2 text-green-500 border-green-500/30">Open to Work</Badge>
+   781→                      </div>
+   782→                    </div>
+   783→                  </CardContent>
+   784→                </Card>
+   785→              </div>
+   786→
+   787→              {/* Social Profiles Grid */}
+   788→              <div className="lg:col-span-2">
+   789→                <Card className="border-0 shadow-lg h-full">
+   790→                  <CardHeader>
+   791→                    <CardTitle className="flex items-center gap-2">
+   792→                      <Sparkles className="h-5 w-5 text-primary" />
+   793→                      Connect With Me
+   794→                    </CardTitle>
+   795→                    <CardDescription>
+   796→                      Follow me on social media for updates, tips, and more content.
+   797→                    </CardDescription>
+   798→                  </CardHeader>
+   799→                  <CardContent>
+   800→                    <div className="grid sm:grid-cols-2 gap-4">
+   801→                      {socialLinks.map((social) => (
+   802→                        <a
+   803→                          key={social.label}
+   804→                          href={social.href}
+   805→                          target="_blank"
+   806→                          rel="noopener noreferrer"
+   807→                          className="flex items-center gap-4 p-5 rounded-xl bg-muted hover:bg-primary/10 border border-transparent hover:border-primary/30 transition-all group"
+   808→                        >
+   809→                          <div className="p-3 rounded-xl bg-background group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+   810→                            <social.icon className="h-5 w-5" />
+   811→                          </div>
+   812→                          <div>
+   813→                            <p className="font-semibold">{social.label}</p>
+   814→                            <p className="text-sm text-muted-foreground group-hover:text-primary/80 transition-colors">{social.username}</p>
+   815→                          </div>
+   816→                        </a>
+   817→                      ))}
+   818→                    </div>
+   819→
+   820→                    {/* Quick CTA */}
+   821→                    <div className="mt-8 p-6 rounded-xl bg-gradient-to-r from-primary/10 to-primary/5 border border-primary/20">
+   822→                      <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+   823→                        <div>
+   824→                          <h4 className="font-semibold mb-1">Ready to start a project?</h4>
+   825→                          <p className="text-sm text-muted-foreground">Let&apos;s create something amazing together!</p>
+   826→                        </div>
+   827→                        <Button className="shrink-0" asChild>
+   828→                          <a href="mailto:mohammednuhman333@gmail.com">
+   829→                            <Send className="h-4 w-4 mr-2" />
+   830→                            Send Email
+   831→                          </a>
+   832→                        </Button>
+   833→                      </div>
+   834→                    </div>
+   835→                  </CardContent>
+   836→                </Card>
+   837→              </div>
+   838→            </div>
+   839→          </div>
+   840→        </div>
+   841→      </section>
+   842→
+   843→      {/* Footer */}
+   844→      <footer className="py-8 border-t mt-auto">
+   845→        <div className="container mx-auto px-4">
+   846→          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+   847→            <div className="flex items-center gap-2">
+   848→              <span className="text-xl font-bold">Nuhman<span className="text-primary">.</span></span>
+   849→            </div>
+   850→            <p className="text-sm text-muted-foreground text-center">
+   851→              &copy; {new Date().getFullYear()} Mohammed Nuhman M. All rights reserved.
+   852→            </p>
+   853→            <div className="flex items-center gap-4">
+   854→              {socialLinks.slice(0, 3).map((social) => (
+   855→                <a
+   856→                  key={social.label}
+   857→                  href={social.href}
+   858→                  target="_blank"
+   859→                  rel="noopener noreferrer"
+   860→                  className="text-muted-foreground hover:text-primary transition-colors"
+   861→                >
+   862→                  <social.icon className="h-5 w-5" />
+   863→                </a>
+   864→              ))}
+   865→            </div>
+   866→          </div>
+   867→        </div>
+   868→      </footer>
+   869→    </div>
+   870→  )
+   871→}
+   872→
