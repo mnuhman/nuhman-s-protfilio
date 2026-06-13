@@ -129,7 +129,7 @@ export const metadata: Metadata = {
   
   // Google Search Console Verification
   verification: {
-    google: "aIHtEAUVfa_Fe0PEaWqVZK-IGI5IxlzYplDcIAtIkG0",
+    google: "2XSyC8Ei6H8k2SzPWzDhxMGaFvCKfYOcdITIEO6p-K8",
   },
   
   // Alternates
