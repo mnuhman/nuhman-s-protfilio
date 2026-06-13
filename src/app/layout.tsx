@@ -128,9 +128,8 @@ export const metadata: Metadata = {
   },
   
   // Google Search Console Verification
-  // Get your verification code from: https://search.google.com/search-console
   verification: {
-    google: "GOOGLE_VERIFICATION_CODE_PLACEHOLDER", // Replace with your Google verification code
+    google: "aIHtEAUVfa_Fe0PEaWqVZK-IGI5IxlzYplDcIAtIkG0",
   },
   
   // Alternates
