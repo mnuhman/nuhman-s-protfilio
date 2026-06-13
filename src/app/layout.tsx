@@ -22,9 +22,12 @@ const siteConfig = {
   author: "Mohammed Nuhman M",
   email: "mohammednuhman333@gmail.com",
   location: "Malappuram, Kerala, India",
-  description: "Frontend Developer specializing in creating modern, responsive web applications with expertise in HTML, CSS, JavaScript, TypeScript, React, and Next.js. Available for freelance projects.",
+  description: "mnuhman (Mohammed Nuhman M) - Frontend Developer from Malappuram, Kerala, India. Expert in HTML, CSS, JavaScript, TypeScript, React, and Next.js. Available for freelance web development projects.",
   keywords: [
+    "mnuhman",
     "Mohammed Nuhman",
+    "Mohammed Nuhman M",
+    "Nuhman Portfolio",
     "Frontend Developer",
     "Web Developer",
     "React Developer",
@@ -58,8 +61,8 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} | Frontend Developer & Web Designer`,
-    template: `%s | ${siteConfig.name}`
+    default: `Mohammed Nuhman M | mnuhman | Frontend Developer`,
+    template: `%s | Mohammed Nuhman M`
   },
   description: siteConfig.description,
   keywords: siteConfig.keywords,
@@ -102,7 +105,7 @@ export const metadata: Metadata = {
     alternateLocale: ["en_GB", "en_IN"],
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: `${siteConfig.name} | Frontend Developer & Web Designer`,
+    title: `Mohammed Nuhman M (mnuhman) | Frontend Developer Portfolio`,
     description: siteConfig.description,
     images: [
       {
@@ -117,18 +120,17 @@ export const metadata: Metadata = {
   // Twitter
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} | Frontend Developer & Web Designer`,
+    title: `Mohammed Nuhman M (mnuhman) | Frontend Developer Portfolio`,
     description: siteConfig.description,
     images: [siteConfig.ogImage],
     creator: "@zackmoon321",
     site: "@zackmoon321",
   },
   
-  // Verification (add your verification codes here)
+  // Google Search Console Verification
+  // Get your verification code from: https://search.google.com/search-console
   verification: {
-    google: "google-site-verification-code", // Add your Google verification code
-    // yandex: "yandex-verification-code",
-    // yahoo: "yahoo-verification-code",
+    google: "GOOGLE_VERIFICATION_CODE_PLACEHOLDER", // Replace with your Google verification code
   },
   
   // Alternates
@@ -164,6 +166,7 @@ const jsonLd = {
       "@type": "Person",
       "@id": `${siteConfig.url}/#person`,
       name: siteConfig.author,
+      alternateName: "mnuhman",
       url: siteConfig.url,
       image: {
         "@type": "ImageObject",
@@ -203,7 +206,7 @@ const jsonLd = {
       "@type": "WebPage",
       "@id": `${siteConfig.url}/#webpage`,
       url: siteConfig.url,
-      name: `${siteConfig.name} | Frontend Developer & Web Designer`,
+      name: `Mohammed Nuhman M (mnuhman) | Frontend Developer Portfolio`,
       isPartOf: {
         "@id": `${siteConfig.url}/#website`,
       },
